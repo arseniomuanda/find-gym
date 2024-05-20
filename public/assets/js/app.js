@@ -3,7 +3,8 @@ const appVue = new Vue({
     data() {
         return {
             ginasios: [],
-            isLoading: true,
+            isLoading: false,
+            isWelcome: true,
             cliente: {}
         }
     },
@@ -11,6 +12,8 @@ const appVue = new Vue({
     methods: {
         getGinasios: async function (params) {
             this.isLoading = true;
+            this.isWelcome = false;
+            let options = 
             await fetch('/api')
                 .then(response => response.json())
                 .then(data => {
@@ -50,7 +53,7 @@ const appVue = new Vue({
         }
     },
     mounted() {
-        this.getGinasios();
+        // this.getGinasios();
         var url = window.location.href; // Pega a URL atual
         if (url.startsWith("http://localhost:8000/site/detalhes/")) {
             var ultimoCaractere = url.slice(-1);

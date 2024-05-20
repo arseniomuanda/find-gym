@@ -51,13 +51,17 @@
             </div>
 
             <div class="col-md-9">
-                <div v-if="isLoading" class="loading w-100">
+                <div class="isLoading" v-if="isLoading" :class="`${isLoading ? 'display' : ''}`" class="loading w-100">
                     <div class="position-relative">
                         <div class="loader-container">
                             <div class="spinner-border text-primary" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div id="isWelcome" v-if="isWelcome">
+                    <div class="position-absolute">
                     </div>
                 </div>
                 <div v-else id="gyms" :class="`${!isLoading ? 'display' : ''}`">

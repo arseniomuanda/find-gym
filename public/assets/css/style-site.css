@@ -13,8 +13,17 @@
   scroll-behavior: smooth;
 }
 
-#gyms {
+#gyms,
+.isLoading {
   display: none;
+}
+
+#isWelcome {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('/img/login_image_fundo2.jpg');
+  width: 100%;
+  height: 170%;
 }
 
 .display {
