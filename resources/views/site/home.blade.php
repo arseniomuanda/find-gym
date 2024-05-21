@@ -7,13 +7,14 @@
             <div class="col-md-3">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Filtros</h5>
-                        <div class="row mb-2">
-                            <div class="search-bar mb-2">
-                                <div class="row">
-                                    <form class="search-form d-flex align-items-center" method="POST" action="#">
-                                        <input type="text" name="query" placeholder="Pesquisar"
-                                            style="
+                        <form method="POST" id="pesquisar" onsubmit="event.preventDefault();appVue.pesquisar(this)">
+                            <h5 class="card-title">Filtros</h5>
+                            <div class="row mb-2">
+                                <div class="search-bar mb-2">
+                                    <div class="row">
+                                        <div class="search-form d-flex align-items-center">
+                                            <input type="text" name="query" placeholder="Pesquisar"
+                                                style="
                                                 font-size: 14px;
                                                 color: #012970;
                                                 border: 1px solid rgba(1, 41, 112, 0.2);
@@ -22,30 +23,29 @@
                                                 transition: 0.3s;
                                                 width: 100%;
                                             ">
-                                    </form>
-                                </div>
-                                <hr>
+                                        </div>
+                                    </div>
+                                    <hr>
 
-                                <h6 class="card-text">Caregorias</h6>
-                                <div class="row">
-                                    <form>
+                                    <h6 class="card-text">Caregorias</h6>
+                                    <div class="row">
                                         <div class="row mb-5">
                                             @foreach ($categorias as $item)
                                                 <div class="col-sm-10">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="flexSwitchCheckDefault">
+                                                        <input class="form-check-input" name="cat-{{ $item->id }}"
+                                                            type="checkbox" id="cat-{{ $item->id }}">
                                                         <label class="form-check-label"
-                                                            for="flexSwitchCheckDefault">{{ $item->nome }}</label>
+                                                            for="cat-{{ $item->id }}">{{ $item->nome }}</label>
                                                     </div>
                                                 </div>
                                             @endforeach
                                         </div>
-                                    </form>
-                                </div>
-                            </div><!-- End Search Bar -->
-                        </div>
-                        <a href="#" class="btn btn-primary">Pesquisar</a>
+                                    </div>
+                                </div><!-- End Search Bar -->
+                            </div>
+                            <button type="submit" class="btn btn-primary">Pesquisar</button>
+                        </form>
                     </div>
                 </div>
             </div>

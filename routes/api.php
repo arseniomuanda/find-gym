@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', [APIController::class, 'index']);
+Route::post('/', [APIController::class, 'index']);
 Route::get('/getBI/{bi}', [APIController::class, 'findBI']);

@@ -11,10 +11,14 @@ const appVue = new Vue({
 
     methods: {
         pesquisar: async function (params) {
+            console.log(params);
             this.isLoading = true;
             this.isWelcome = false;
-            let options = 
-            await fetch('/api')
+            let options = {
+                method: 'POST',
+                body: new FormData(params)
+            }
+            await fetch('/api', options)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)

@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\Http;
 
 class APIController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // return dd($request->all());
+        /* $data = $request->all();
+
+
+        var_dump($data);
+        return; */
         $data = Ginasios::paginate();
         return response()->json($data);
     }
