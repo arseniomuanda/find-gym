@@ -10,7 +10,7 @@ const appVue = new Vue({
     },
 
     methods: {
-        getGinasios: async function (params) {
+        pesquisar: async function (params) {
             this.isLoading = true;
             this.isWelcome = false;
             let options = 
