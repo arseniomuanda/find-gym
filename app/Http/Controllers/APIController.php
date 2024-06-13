@@ -12,13 +12,26 @@ class APIController extends Controller
     public function index(Request $request)
     {
         // return dd($request->all());
-        /* $data = $request->all();
+        $data = $request->only(['query', 'cat']);
+        $gymQuerys = Ginasios::query();
 
+        if ($request->query) {
+            $gymQuerys->where('nome', 'LIKE', "%{$data['query']}%");
+        }
 
-        var_dump($data);
-        return; */
-        $data = Ginasios::paginate();
-        return response()->json($data);
+        if (!empty($data['cat'])) {
+            // return dd($request->all());
+            if (count($request->cat) > 1) {
+                $gymQuerys->whereIn('categoria', $data['cat']);
+            } else {
+                $gymQuerys->where('categoria', $request->cat[0]);
+            }
+        }
+        $gyms = $gymQuerys->paginate(6);
+
+        // var_dump($data);
+        // $data = Ginasios::paginate();
+        return response()->json($gyms);
     }
 
 

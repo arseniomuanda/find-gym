@@ -33,8 +33,8 @@
                                             @foreach ($categorias as $item)
                                                 <div class="col-sm-10">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" name="cat-{{ $item->id }}"
-                                                            type="checkbox" id="cat-{{ $item->id }}">
+                                                        <input class="form-check-input" name="cat[]"
+                                                            type="checkbox" value="{{ $item->id }}" id="cat-{{ $item->id }}">
                                                         <label class="form-check-label"
                                                             for="cat-{{ $item->id }}">{{ $item->nome }}</label>
                                                     </div>
